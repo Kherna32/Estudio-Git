@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css"/>
+    <script type="javascript" src="bootstrap/js/bootstrap.bundle.min.js" ></script>
+    
+    <script>
+        var opciones=["Piedra","Papel","Tijera"];
+        function Juego(data){
+            //tomamos la opcion de la cpu
+            var CPU = opciones[(Math.floor(Math.random()*3))];
+            
+            //user = piedra
+            if (data == "Piedra"){
+                if (CPU=="Papel"){
+                    Resp("Gane!! escogiste " + data +" y yo " + CPU);
+                }else if(CPU == "Tijeras"){
+                    Resp("Has Ganado!!! escogiste " + data +" y yo " + CPU);
+                }else{
+                    Resp("Nadie gana!! ambos escogimos " + data);
+                }
+            }
+            //user = papel
+            if(data=="Papel"){
+                if(CPU=="Piedra"){
+                    Resp("Has Ganado!!! escogiste " + data +" y yo " + CPU);
+                }else if(CPU == "Tijera"){
+                    Resp("Gane!! escogiste " + data +" y yo " + CPU);
+                }else{
+                    Resp("Nadie gana!! ambos escogimos " + data);
+                }
+            }
+            //user = Tijera
+            if(data =="Tijera"){
+                if(CPU == "Piedra"){
+                    Resp("Gane!! escogiste " + data +" y yo " + CPU); 
+                }else if(CPU == "Papel"){
+                    Resp("Has Ganado!!! escogiste " + data +" y yo " + CPU); 
+                }else{
+                    Resp("Nadie gana!! ambos escogimos " + data);
+                }
+            }
+        }
+        function Resp(text){
+            document.getElementById("Resp").innerHTML=text;
+        }   
+
+    </script>
+</head>
+<body>
+    <h2>Jugemos Piedra, Papel o Tijeras</h2>
+       
+    <select onchange="javascript:Juego(this.value)">
+        <option></option>
+        <option>Piedra</option>
+        <option>Papel</option>
+        <option>Tijera</option>
+    </select>
+
+    <div id="Resp"></div>
+</body>
+</html>
