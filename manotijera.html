@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css"/>
-    <script type="javascript" src="bootstrap/js/bootstrap.bundle.min.js" ></script>
+    <script  src="bootstrap/js/bootstrap.bundle.min.js" ></script>
     
     <script>
         var opciones=["Piedra","Papel","Tijera"];
@@ -54,13 +54,17 @@
 <body>
     <h2>Jugemos Piedra, Papel o Tijeras</h2>
        
-    <select onchange="javascript:Juego(this.value)">
-        <option></option>
-        <option>Piedra</option>
-        <option>Papel</option>
-        <option>Tijera</option>
-    </select>
-
+    
+    <div class="dropdown">
+        <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">
+          Dropdown button
+        </button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#" onclick="Juego(this.text)">Piedra</a></li>
+          <li><a class="dropdown-item" href="#" onclick="Juego(this.text)">Papel</a></li>
+          <li><a class="dropdown-item" href="#" onclick="Juego(this.text)">Tijera</a></li>
+        </ul>
+      </div>
     <div id="Resp"></div>
 </body>
 </html>
