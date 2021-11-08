@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css"/>
+    <script  src="bootstrap/js/bootstrap.bundle.min.js" ></script>
+    <style>
+        #Resp{
+           width: 500px;
+           height: 60px;
+           background-color: darkgreen;
+           color:white;
+           font-size: large;
+           font-weight: bold;
+           border-style: solid 1px solid green;
+           border-radius: 10px;
+           box-shadow: 5px 5px 5px gray ; 
+        }
+        .dropdown{
+            margin-bottom: 20px;
+        }
+    </style>
+    <script>
+        var opciones=["Piedra","Papel","Tijera"];
+        function Juego(data){
+            //tomamos la opcion de la cpu
+            var CPU = opciones[(Math.floor(Math.random()*3))];
+            
+            //user = piedra
+            if (data == "Piedra"){
+                if (CPU=="Papel"){
+                    Resp("Gane!! escogiste " + data +" y yo " + CPU);
+                }else if(CPU == "Tijeras"){
+                    Resp("Has Ganado!!! escogiste " + data +" y yo " + CPU);
+                }else{
+                    Resp("Nadie gana!! ambos escogimos " + data);
+                }
+            }
+            //user = papel
+            if(data=="Papel"){
+                if(CPU=="Piedra"){
+                    Resp("Has Ganado!!! escogiste " + data +" y yo " + CPU);
+                }else if(CPU == "Tijera"){
+                    Resp("Gane!! escogiste " + data +" y yo " + CPU);
+                }else{
+                    Resp("Nadie gana!! ambos escogimos " + data);
+                }
+            }
+            //user = Tijera
+            if(data =="Tijera"){
+                if(CPU == "Piedra"){
+                    Resp("Gane!! escogiste " + data +" y yo " + CPU); 
+                }else if(CPU == "Papel"){
+                    Resp("Has Ganado!!! escogiste " + data +" y yo " + CPU); 
+                }else{
+                    Resp("Nadie gana!! ambos escogimos " + data);
+                }
+            }
+        }
+        function Resp(text){
+            document.getElementById("Resp").innerHTML=text;
+        }   
+
+    </script>
+</head>
+<body>
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Logo</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+              </li>  
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Dropdown</a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Link</a></li>
+                  <li><a class="dropdown-item" href="#">Another link</a></li>
+                  <li><a class="dropdown-item" href="#">A third link</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    <h2>Jugemos Piedra, Papel o Tijeras</h2>
+       
+    
+    <div class="dropdown">
+        <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">
+          Dropdown button
+        </button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#" onclick="Juego(this.text)">Piedra</a></li>
+          <li><a class="dropdown-item" href="#" onclick="Juego(this.text)">Papel</a></li>
+          <li><a class="dropdown-item" href="#" onclick="Juego(this.text)">Tijera</a></li>
+        </ul>
+      </div>
+
+    <div id="Resp"></div>
+</body>
+</html>
