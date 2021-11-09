@@ -9,21 +9,31 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"></script>
     <!-- vamos a ver si esto llega a github-->
     <style>
-        #Resp{
-           width: 500px;
-           height: 60px;
-           background-color: darkgreen;
-           color:white;
-           font-size: large;
-           font-weight: bold;
-           border-style: solid 1px solid green;
-           border-radius: 10px;
-           box-shadow: 5px 5px 5px gray ; 
-        }
-        .dropdown{
-            margin-bottom: 20px;
-        }
-    </style>
+      #Resp{
+         width: 500px;
+         height: 60px;
+         background-color: darkgreen;
+         color:white;
+         font-size: large;
+         font-weight: bold;
+         border-style: solid 1px solid green;
+         border-radius: 10px;
+         box-shadow: 5px 5px 5px gray ; 
+      }
+      .dropdown{
+          margin-bottom: 20px;
+      }
+
+      .footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color:black;
+  color: white;
+  text-align: center;
+}
+  </style>
     <script>
         var opciones=["Piedra","Papel","Tijera"];
         function Juego(data){
@@ -112,5 +122,10 @@
       </div>
 
     <div id="Resp"></div>
+
+
+    <div class="footer">
+      <p>Footer</p>
+    </div>
 </body>
 </html>
