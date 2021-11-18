@@ -90,6 +90,17 @@
         }
      
     }
+    input[type=text], select {
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid rgb(39, 37, 143);
+        border-radius: 4px;
+        box-sizing: border-box;
+        width: 100%;
+        
+        color:slategrey;
+    }
 
   </style>
     
@@ -116,33 +127,313 @@
       
             <!-- respuesta al jugador -->
             <div id="Resp"></div>
+            <select name="nivel" id="nivel">
+                <option value=0 onclick="AsignarNivel(0)">Nivel 0</option>
+                <option value=0>Nivel 1</option>
+                <option value=0>Nivel 2</option>
+            </select>
         </div>
     </div>    
 
     
 </body>
 <script>
-    window.onload = function () 
+    (window.onload = function () 
     {   
         /***********************************************************/
         /* Posicion almacena como una cadena de numeros las posicion actual del tablero*/
         /***********************************************************/
         var Posicion="";
-        var btn =document.querySelectorAll('.grid-item')
+        var whoFirst="you";
+        var Nivel=0;
+        var btn =document.querySelectorAll('.grid-item');
         for(var i=0;i<btn.length;i++)
         {
             btn[i].addEventListener("click", function()
             {
-              
-               document.getElementById(this.id).innerText="X";
-               AgregarPosicion(this.id)
+               //si la casilla ya esta ocupada - avisar
+               let ocu=document.getElementById(this.id).innerText;               
+
+               if (ocu == ""){
+                   document.getElementById(this.id).style.color="red";
+                   document.getElementById(this.id).innerText = "X";
+                   AgregarPosicion(this.id);
+                   MiMov(this.id);
+               }
+               
 
             }); 
         }
         function AgregarPosicion(ele){
-            Posicion += String(ele);
-            alert(`Posicion agregada ${Posicion}`);
+            Posicion = ele;
+            //alert(`Posicion agregada ${Posicion}`);
+        }        
+        
+
+        function AsignarNivel(nivel)
+        {
+            Nivel = nivel;
+            alert(Nivel);
         }
-    }   
+        function Marcar(ele){
+            document.getElementById(ele).style.color="blue";
+            document.getElementById(ele).innerText="0";
+        }
+
+        function Derecha(ele){
+            let i=parseInt(ele,10);
+            let n=i+1;
+            let cont = document.getElementById(n).innerText;
+            if (cont != ""){
+                return false;
+            }else{
+                return true;
+            }
+            // switch(ele){
+            //     case 1:
+            //         if(cont != ""){
+            //             return false;
+            //         }else{
+            //             return true;
+            //         }
+            //         break;
+            //     case 2:
+            //         if(cont != ""){
+            //             return true;
+            //         }else{
+            //             return false;
+                           
+            //         } 
+            //         break;
+            //     case 4:
+            //         if(cont != ""){
+            //             return true;
+            //         }else{
+            //             return false;
+                           
+            //         } 
+            //         break;
+            //     case 5:
+            //         if(cont != ""){
+            //             return true;
+            //         }else{
+            //             return false;
+                           
+            //         } 
+            //         break;
+            //     case 7:
+            //         if(cont != ""){
+            //             return true;
+            //         }else{
+            //             return false;
+                           
+            //         } 
+            //         break; 
+            //     case 8:
+            //         if(cont != ""){
+            //             return true;
+            //         }else{
+            //             return false;
+                           
+            //         } 
+            //         break;           
+                    
+
+            // }
+        }
+        function Abajo(ele){
+            //let i=parseInt(ele,10);
+            //let n=i+1;
+            let cont;
+            //cont = document.getElementById(n).innerText;
+            
+            
+            switch(ele){
+                case 1:
+                cont = document.getElementById(4).innerText;
+                    if(cont != ""){
+                        return false;
+                    }else{
+                        return true;
+                    }
+                    break;
+                case 2:
+                cont = document.getElementById(5).innerText;
+                    if(cont != ""){
+                        return false;
+                    }else{
+                        return true;
+                           
+                    } 
+                    break;
+                case 3:
+                cont = document.getElementById(6).innerText;
+                    if(cont != ""){
+                        return false;
+                    }else{
+                        return true;
+                           
+                    } 
+                    break;
+                case 4:
+                cont = document.getElementById(7).innerText;
+                    if(cont != ""){
+                        return false;
+                    }else{
+                        return true;
+                           
+                    } 
+                    break;
+                case 5:
+                cont = document.getElementById(8).innerText;
+                    if(cont != ""){
+                        return false;
+                    }else{
+                        return true;
+                           
+                    } 
+                    break; 
+                case 6:
+                cont = document.getElementById(9).innerText;
+                    if(cont != ""){
+                        return false;
+                    }else{
+                        return true;
+                           
+                    } 
+                    break;           
+                    
+
+            }
+
+        }
+
+        function Izquierda(ele){
+            let i=parseInt(ele,10);
+            let cont;
+            
+            switch(i){
+                case 2:
+                cont = document.getElementById(1).innerText;
+                    if(cont != ""){
+                        return false;
+                    }else{
+                        return true;
+                    }
+                    break;
+                case 3:
+                cont = document.getElementById(2).innerText;
+                    if(cont != ""){
+                        return false;
+                    }else{
+                        return true;
+                           
+                    } 
+                    break;
+                case 5:
+                cont = document.getElementById(4).innerText;
+                    if(cont != ""){
+                        return false;
+                    }else{
+                        return true;
+                           
+                    } 
+                    break;
+                case 6:
+                cont = document.getElementById(5).innerText;
+                    if(cont != ""){
+                        return false;
+                    }else{
+                        return true;
+                           
+                    } 
+                    break;
+                case 8:
+                cont = document.getElementById(7).innerText;
+                    if(cont != ""){
+                        return false;
+                    }else{
+                        return true;
+                           
+                    } 
+                    break; 
+                case 9:
+                cont = document.getElementById(8).innerText;
+                    if(cont != ""){
+                        return false;
+                    }else{
+                        return true;
+                           
+                    } 
+                    break;           
+                    
+
+            }
+
+        }
+        function MiMov(ele){
+           switch(ele){
+               case "1":
+                   if(Derecha(1)){
+                       Marcar(2);
+                   }else if(Abajo(1)){
+                        Marcar(4);
+                   }
+                   break;
+                case "2":
+                    if(Derecha(2)){
+                        Marcar(3);
+                    }else if(Izquierda(2)){
+                        Marcar(1);
+                    }
+                    break;
+                    case "3":
+                        if(Abajo(3)){
+                            Marcar(6);
+                        }else if(Izquierda(3)){
+                            Marcar(2)
+                        }
+                        break;
+                case "4":
+                    if(Derecha(4)){
+                        Marcar(5)
+                    }       
+                    break;
+                case "5":
+                    if(Derecha(5)){
+                        Marcar(6)
+                    } else if(Izquierda(5)){
+                        Marcar(4);
+                    }      
+                    break;
+                case "6":
+                    if(Izquierda(6)){
+                        Marcar(5);
+                    }else if(Abajo(6)){
+                        Marcar(9);
+                    }
+                    break;   
+                case "7":
+                    if(Derecha(7)){
+                        Marcar(8)
+                    }       
+                    break;
+                case "8":
+                    if(Derecha(8)){
+                        Marcar(9)
+                    }else if(Izquierda(8)){
+                        Marcar(7)
+                    }      
+                    break;
+                case "9":
+                    if(Izquierda(9)){
+                        Marcar(8);
+                    }
+                    break;     
+                                      
+           }
+        }
+        
+    })();   
     </script>
 </html>
